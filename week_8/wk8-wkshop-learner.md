@@ -2,11 +2,9 @@
 import pandas as pd
 import numpy as np
 ```
-
 # 1. Data Loading and Exploration
 
 ## * Read all CSV files into Pandas DataFrames
-
 
 ```python
 stores = pd.read_csv('stores.csv')
@@ -17,7 +15,6 @@ customers = pd.read_csv('customers.csv')
 ```
 
 ## * Display the first few rows of each DataFrame
-
 
 ```python
 stores.head()
@@ -102,9 +99,6 @@ stores.head()
 </table>
 </div>
 
-
-
-
 ```python
 sales.head()
 ```
@@ -181,9 +175,6 @@ sales.head()
   </tbody>
 </table>
 </div>
-
-
-
 
 ```python
 products.head()
@@ -262,9 +253,6 @@ products.head()
 </table>
 </div>
 
-
-
-
 ```python
 inventory.head()
 ```    
@@ -329,9 +317,6 @@ inventory.head()
   </tbody>
 </table>
 </div>
-
-
-
 
 ```python
 customers.head()
@@ -422,12 +407,9 @@ customers.head()
 </table>
 </div>
 
-
-
 # 2. Exploratory Analysis
 
 ## * Obtain summary statistics for numerical columns
-
 
 ```python
 sales.describe()
@@ -521,9 +503,6 @@ sales.describe()
 </table>
 </div>
 
-
-
-
 ```python
 products.describe()
 ```
@@ -597,9 +576,6 @@ products.describe()
   </tbody>
 </table>
 </div>
-
-
-
 
 ```python
 inventory.describe()
@@ -684,23 +660,15 @@ inventory.describe()
 </table>
 </div>
 
-
-
 ## * Check for missing values in all dataframes
-
 
 ```python
 print('\nStores: Columns/Missing values')
 stores.isnull().sum()
 ```
-
     
     Stores: Columns/Missing values
-    
-
-
-
-
+  
     store_id        0
     store_name      0
     address         0
@@ -712,21 +680,13 @@ stores.isnull().sum()
     opening_date    1
     dtype: int64
 
-
-
-
 ```python
 print('\nSales: Columns/Missing values')
 sales.isnull().sum()
 ```
-
     
     Sales: Columns/Missing values
-    
-
-
-
-
+  
     sale_id           0
     date              1
     store_id          1
@@ -737,21 +697,13 @@ sales.isnull().sum()
     payment_method    1
     dtype: int64
 
-
-
-
 ```python
 print('\nProducts: Columns/Missing values')
 products.isnull().sum()
 ```
-
     
     Products: Columns/Missing values
-    
-
-
-
-
+ 
     product_id      0
     product_name    0
     category        0
@@ -762,21 +714,13 @@ products.isnull().sum()
     weight          2
     dtype: int64
 
-
-
-
 ```python
 print('\nInventory: Columns/Missing values')
 inventory.isnull().sum()
 ```
-
     
     Inventory: Columns/Missing values
-    
-
-
-
-
+ 
     inventory_id         0
     store_id             0
     product_id           0
@@ -785,21 +729,13 @@ inventory.isnull().sum()
     reorder_level        6
     dtype: int64
 
-
-
-
 ```python
 print('\nCustomers: Columns/Missing values')
 customers.isnull().sum()
 ```
-
     
     Customers: Columns/Missing values
     
-
-
-
-
     customer_id          0
     first_name           0
     last_name            0
@@ -812,10 +748,7 @@ customers.isnull().sum()
     registration_date    3
     dtype: int64
 
-
-
 ## * Display the data types of each column
-
 
 ```python
 print('\nStores: Columns/Data Types')
@@ -833,9 +766,6 @@ stores.dtypes
     size_sqft       float64
     opening_date        str
     dtype: object
-
-
-
 
 ```python
 print('\nSales: Columns/Data Types')
@@ -900,8 +830,6 @@ customers.dtypes
     zip_code               str
     registration_date      str
     dtype: object
-
-
 
 # 3. Basic Information Retrieval
 
