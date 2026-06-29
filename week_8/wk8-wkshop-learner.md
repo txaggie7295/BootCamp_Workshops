@@ -820,15 +820,9 @@ customers.isnull().sum()
 ```python
 print('\nStores: Columns/Data Types')
 stores.dtypes
-```
-
-    
+```    
     Stores: Columns/Data Types
     
-
-
-
-
     store_id          int64
     store_name          str
     address             str
@@ -846,15 +840,9 @@ stores.dtypes
 ```python
 print('\nSales: Columns/Data Types')
 sales.dtypes
-```
-
-    
+```    
     Sales: Columns/Data Types
-    
-
-
-
-
+   
     sale_id             int64
     date                  str
     store_id          float64
@@ -865,20 +853,11 @@ sales.dtypes
     payment_method        str
     dtype: object
 
-
-
-
 ```python
 print('\nProducts: Columns/Data Types')
 products.dtypes
-```
-
-    
-    Products: Columns/Data Types
-    
-
-
-
+```    
+    Products: Columns/Data Types 
 
     product_id        int64
     product_name        str
@@ -890,21 +869,12 @@ products.dtypes
     weight          float64
     dtype: object
 
-
-
-
 ```python
 print('\nInventory: Columns/Data Types')
 inventory.dtypes
-```
-
-    
+```    
     Inventory: Columns/Data Types
     
-
-
-
-
     inventory_id           int64
     store_id               int64
     product_id             int64
@@ -913,20 +883,11 @@ inventory.dtypes
     reorder_level        float64
     dtype: object
 
-
-
-
 ```python
 print('\nCustomers: Columns/Data Types')
 customers.dtypes
-```
-
-    
+```    
     Customers: Columns/Data Types
-    
-
-
-
 
     customer_id          int64
     first_name             str
@@ -946,7 +907,6 @@ customers.dtypes
 
 ## * How many unique products are in the product catalog?
 
-
 ```python
 dupe_prods = products.duplicated(subset=['product_name']).sum()
 
@@ -954,17 +914,12 @@ print('\n=======================================================================
 print(f'The number of duplicate products in the product table is {dupe_prods}.')
 print('=========================================================================\n')
 
-```
-
-    
+```    
     =========================================================================
     The number of duplicate products in the product table is 0.
     =========================================================================
-    
-    
 
 ## * What are the top 5 most expensive products?
-
 
 ```python
 top_5 = products.nlargest(5, 'price')[['product_name', 'price']]
@@ -977,7 +932,6 @@ for i, row in enumerate(top_5.itertuples(), start=1):
 print('=======================================================\n')    
 
 ```
-
     
     =======================================================
     The top 5 most expensive products are:
@@ -988,11 +942,8 @@ print('=======================================================\n')
     4) Dyson V11 Vacuum          $599.99
     5) Sony PlayStation 5        $499.99
     =======================================================
-    
-    
-
+  
 ## * Which store has the largest floor space?
-
 
 ```python
 # 1st try
@@ -1006,14 +957,10 @@ print('=========================================================================
 
 ```
 
-    
     ====================================================================================
     The Los Angeles Plaza has the largest floor space with 55,000.0 sq feet.
     ====================================================================================
-    
-    
-
-
+ 
 ```python
 # 2nd try
 row = stores.nlargest(1, 'size_sqft').iloc[0]
@@ -1022,17 +969,12 @@ print('\n=======================================================================
 print(f"The {row.store_name} has the largest floor space with {row.size_sqft:,} sq feet.")
 print('====================================================================================\n')
 ```
-
     
     ====================================================================================
     The Los Angeles Plaza has the largest floor space with 55,000.0 sq feet.
     ====================================================================================
-    
-    
-
+ 
 ## * What is the distribution of customers by state?
-
-
 
 ```python
 state_abbrev = {
@@ -1053,9 +995,6 @@ state_abbrev = {
 customers['state'] = customers['state'].map(state_abbrev).fillna(customers['state'])
 customers['state'].value_counts()
 ```
-
-
-
 
     state
     TX    5
@@ -1082,12 +1021,9 @@ customers['state'].value_counts()
     MO    1
     Name: count, dtype: int64
 
-
-
 # 4. Data Cleaning - Handling Missing Values
 
 ## * Create copies of original DataFrames for cleaning
-
 
 ```python
 inventory_raw = inventory.copy()
@@ -1155,31 +1091,11 @@ inventory_raw.head()
 </table>
 </div>
 
-
-
-
 ```python
 stores_raw = stores.copy()
 stores_raw.head()
 ```
 
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -1260,31 +1176,11 @@ stores_raw.head()
 </table>
 </div>
 
-
-
-
 ```python
 sales_raw = sales.copy()
 sales_raw.head()
 ```
 
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -1359,31 +1255,11 @@ sales_raw.head()
 </table>
 </div>
 
-
-
-
 ```python
 products_raw = products.copy()
 products_raw.head()
 ```
 
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -1458,31 +1334,11 @@ products_raw.head()
 </table>
 </div>
 
-
-
-
 ```python
 customers_raw = customers.copy()
 customers_raw.head()
 ```
 
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -1569,17 +1425,11 @@ customers_raw.head()
 </table>
 </div>
 
-
-
 ## * Identify all missing values in each dataset
-
 
 ```python
 stores.isnull().sum()
 ```
-
-
-
 
     store_id        0
     store_name      0
@@ -1592,15 +1442,9 @@ stores.isnull().sum()
     opening_date    1
     dtype: int64
 
-
-
-
 ```python
 sales.isnull().sum()
 ```
-
-
-
 
     sale_id           0
     date              1
@@ -1612,15 +1456,9 @@ sales.isnull().sum()
     payment_method    1
     dtype: int64
 
-
-
-
 ```python
 customers.isnull().sum()
 ```
-
-
-
 
     customer_id          0
     first_name           0
@@ -1634,15 +1472,9 @@ customers.isnull().sum()
     registration_date    3
     dtype: int64
 
-
-
-
 ```python
 inventory.isnull().sum()
 ```
-
-
-
 
     inventory_id         0
     store_id             0
@@ -1652,15 +1484,9 @@ inventory.isnull().sum()
     reorder_level        6
     dtype: int64
 
-
-
-
 ```python
 products.isnull().sum()
 ```
-
-
-
 
     product_id      0
     product_name    0
@@ -1672,17 +1498,11 @@ products.isnull().sum()
     weight          2
     dtype: int64
 
-
-
 ## * For numerical columns with missing values, replace with column mean
-
 
 ```python
 stores['size_sqft'].fillna(stores['size_sqft'].mean())
 ```
-
-
-
 
     0     32500.000000
     1     45000.000000
@@ -1701,15 +1521,9 @@ stores['size_sqft'].fillna(stores['size_sqft'].mean())
     14    20000.000000
     Name: size_sqft, dtype: float64
 
-
-
-
 ```python
 inventory['reorder_level'].fillna(inventory['reorder_level'].mean())
 ```
-
-
-
 
     0     10.0
     1     15.0
@@ -1724,15 +1538,9 @@ inventory['reorder_level'].fillna(inventory['reorder_level'].mean())
     74    10.0
     Name: reorder_level, Length: 75, dtype: float64
 
-
-
-
 ```python
 products['weight'].fillna(products['weight'].mean())
 ```
-
-
-
 
     0      0.450000
     1      0.500000
@@ -1766,10 +1574,7 @@ products['weight'].fillna(products['weight'].mean())
     29     3.200000
     Name: weight, dtype: float64
 
-
-
 ## *For categorical columns with missing values, replace with most frequent value
-
 
 ```python
 sales.isna().sum()
@@ -1777,9 +1582,6 @@ sales.head()
 sales['payment_method'].mode()[0]
 sales['payment_method'].fillna(sales['payment_method'].mode()[0])
 ```
-
-
-
 
     0     Credit Card
     1     credit card
@@ -1823,10 +1625,7 @@ sales['payment_method'].fillna(sales['payment_method'].mode()[0])
     39           CASH
     Name: payment_method, dtype: str
 
-
-
 ## *For date columns with missing values, use forward fill or backward fill as appropriate
-
 
 ```python
 stores.isna().sum()
@@ -1834,9 +1633,6 @@ stores
 stores['opening_date']
 stores['opening_date'].ffill()
 ```
-
-
-
 
     0     2005-05-20
     1     2007-08-15
@@ -1855,17 +1651,11 @@ stores['opening_date'].ffill()
     14    2018-09-25
     Name: opening_date, dtype: str
 
-
-
-
 ```python
 sales.isna().sum()
 sales['date']
 sales['date'].ffill()
 ```
-
-
-
 
     0     2022-01-15
     1     2022-01-16
@@ -1909,17 +1699,11 @@ sales['date'].ffill()
     39    2022-07-10
     Name: date, dtype: str
 
-
-
-
 ```python
 customers.isnull().sum()
 customers['registration_date']
 customers['registration_date'].ffill()
 ```
-
-
-
 
     0     2021-03-15
     1     2020-11-02
@@ -1954,9 +1738,6 @@ customers['registration_date'].ffill()
     30    2020-10-15
     Name: registration_date, dtype: str
 
-
-
-
 ```python
 inventory.head()
 inventory.isnull().sum()
@@ -1965,9 +1746,6 @@ inventory['last_restock_date']
 # inven.tolist()
 inventory['last_restock_date'].ffill()
 ```
-
-
-
 
     0     2022-10-15
     1     2022-11-02
@@ -1982,12 +1760,9 @@ inventory['last_restock_date'].ffill()
     74    2022-10-01
     Name: last_restock_date, Length: 75, dtype: str
 
-
-
 # 5. Removing Duplicates
 
 ## * Check for and remove any duplicate entries in the customers and products dataframes
-
 
 ```python
 # cheack for duplicate customer records by customer_id
@@ -1996,24 +1771,6 @@ customers['customer_id'].duplicated().sum()
 customers['customer_id'].duplicated()
 customers[customers['customer_id'].duplicated(keep=False)]
 ```
-
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -2061,9 +1818,6 @@ customers[customers['customer_id'].duplicated(keep=False)]
 </table>
 </div>
 
-
-
-
 ```python
 customers[customers['customer_id'].duplicated(keep=False)]
 
@@ -2071,24 +1825,6 @@ customers[customers['customer_id'].duplicated(keep=False)]
 
 customers.drop_duplicates(subset='customer_id', keep='last')
 ```
-
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -2500,9 +2236,6 @@ customers.drop_duplicates(subset='customer_id', keep='last')
 </table>
 </div>
 
-
-
-
 ```python
 # Checked product_id and product name, and show no duplicate rows for same product
 
@@ -2514,12 +2247,7 @@ products['product_name'].duplicated().sum()
 products['product_id'].duplicated().sum()
 ```
 
-
-
-
     np.int64(0)
-
-
 
 # Discussion Questions
 
